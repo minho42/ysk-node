@@ -7,7 +7,7 @@ const userAgent =
 const getRealRate = (rate, fee) => {
   if (!fee || fee === 0) return rate;
 
-  return (Math.round((baseAmount - fee) * rate * 100) / 100 / baseAmount).toFixed(2);
+  return Math.round((baseAmount - fee) * rate * 100) / 100 / baseAmount;
 };
 
 const getNaverUsd = async () => {
