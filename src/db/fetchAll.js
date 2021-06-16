@@ -42,7 +42,6 @@ const fetchAll = async () => {
     try {
       const data = await company();
       const filter = { name: data.name };
-      // TODO some rate/fee are string vs number
 
       const update = {
         name: data.name,
