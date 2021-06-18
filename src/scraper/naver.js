@@ -11,11 +11,12 @@ const naver = async () => {
       const res = await axios.get(url);
       const $ = cheerio.load(res.data);
       const rate = $(selector).text().trim();
+      const fee = 0;
       resolve({
         name,
         url,
         rate,
-        fee: 0,
+        fee,
         note: "Base",
       });
     } catch (e) {
