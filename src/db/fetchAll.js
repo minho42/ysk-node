@@ -6,6 +6,7 @@ const utils = require("../utils");
 const azimo = require("../scraper/azimo");
 const commbank = require("../scraper/commbank");
 const dondirect = require("../scraper/dondirect");
+const gomtransfer = require("../scraper/gomtransfer");
 const instarem = require("../scraper/instarem");
 const naver = require("../scraper/naver");
 const orbitremit = require("../scraper/orbitremit");
@@ -14,35 +15,35 @@ const stra = require("../scraper/stra");
 const wirebarley = require("../scraper/wirebarley");
 const wise = require("../scraper/wise");
 const wiztoss = require("../scraper/wiztoss");
+const wontop = require("../scraper/wontop");
 
 // TODO: remove comma from rate/realRate if A$1 > W1,000
 
-// dondirect(),
-// wontop(),
 // gomtransfer(),
 
 const fetchAll = async () => {
   console.log("fetchAll called");
 
   const companies = [
-    azimo,
-    commbank,
-    dondirect,
-    instarem,
-    orbitremit,
-    remitly,
-    stra,
-    wirebarley,
-    wise,
-    wiztoss,
-    naver,
+    // azimo,
+    // commbank,
+    // dondirect,
+    // gomtransfer,
+    // instarem,
+    // naver,
+    // orbitremit,
+    // remitly,
+    // stra,
+    // wirebarley,
+    // wise,
+    // wiztoss,
+    wontop,
   ];
-  // const companies = [wise];
   companies.map(async (company) => {
     try {
       const data = await company();
       const filter = { name: data.name };
-
+      console.log(data);
       const update = {
         name: data.name,
         url: data.url,
