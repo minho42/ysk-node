@@ -6,13 +6,9 @@ const dondirect = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  // await page.goto(url, {
-  //   waitUntil: "networkidle2",
-  // });
-  await page.goto(url);
-  await page.waitForSelector(
-    "body > div.full-height.ng-scope.layout-row > div > div.layout-xs-column.layout-row.flex > md-content > div > span > div.margin-top-20.layout-column > div:nth-child(1) > div.margin-top-5.margin-bottom-5 > center:nth-child(1) > span"
-  );
+  await page.goto(url, {
+    waitUntil: "networkidle2",
+  });
 
   const rateText = await page.evaluate(() => {
     return document.querySelector(

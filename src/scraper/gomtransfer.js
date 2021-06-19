@@ -6,8 +6,9 @@ const gomtransfer = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  await page.goto(url);
-  await page.waitForSelector("#hohans");
+  await page.goto(url, {
+    waitUntil: "networkidle2", // Using this instead of waitForSelector for iframe
+  });
 
   const rate = await page.evaluate(() => {
     return document.querySelector("#hohans").textContent;
