@@ -5,7 +5,6 @@ const wontop = async () => {
   const url = "http://www.wontop.com.au";
 
   const browser = await puppeteer.launch({
-    headless: false,
     args: ["--disable-web-security", "--disable-features=IsolateOrigins,site-per-process"],
   });
   const page = await browser.newPage();
