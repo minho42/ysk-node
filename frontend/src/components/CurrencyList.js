@@ -9,17 +9,17 @@ const CurrencyList = () => {
   const getData = async () => {
     const res = await fetch("https://ysk-node.herokuapp.com/data");
     // const res = await fetch('http://localhost:8000/data')
-    const { data } = await res.json();
+    const data = await res.json();
     // console.log(data);
     setCurrencies(data);
 
     if (data && data.length > 0) {
       const dataSortedByModified = [...data].sort((a, b) => {
-        if (new Date(a.modified) > new Date(b.modified)) return -1;
-        if (new Date(a.modified) < new Date(b.modified)) return 1;
+        if (new Date(a.updated) > new Date(b.updated)) return -1;
+        if (new Date(a.updated) < new Date(b.updated)) return 1;
       });
 
-      const lastUpdate = dataSortedByModified[0].modified;
+      const lastUpdate = dataSortedByModified[0].updated;
       if (lastUpdate) {
         setLastUpdate(formatDistance(new Date(lastUpdate), new Date()) + " ago");
       }
