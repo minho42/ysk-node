@@ -4,7 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const Currency = require("./models/currency");
 const cron = require("node-cron");
-const fetchAll = require("./db/fetchAll");
+const fetchAll = require("./fetchAll");
 
 cron.schedule(
   "*/5 * * * *",

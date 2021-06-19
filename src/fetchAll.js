@@ -1,21 +1,21 @@
 const https = require("https");
-const Currency = require("../models/currency");
-require("./mongoose");
-const utils = require("../utils");
+const Currency = require("./models/currency");
+require("./db/mongoose");
+const utils = require("./utils");
 
-const azimo = require("../scraper/azimo");
-const commbank = require("../scraper/commbank");
-const dondirect = require("../scraper/dondirect");
-const gomtransfer = require("../scraper/gomtransfer");
-const instarem = require("../scraper/instarem");
-const naver = require("../scraper/naver");
-const orbitremit = require("../scraper/orbitremit");
-const remitly = require("../scraper/remitly");
-const stra = require("../scraper/stra");
-const wirebarley = require("../scraper/wirebarley");
-const wise = require("../scraper/wise");
-const wiztoss = require("../scraper/wiztoss");
-const wontop = require("../scraper/wontop");
+const azimo = require("./scraper/azimo");
+const commbank = require("./scraper/commbank");
+const dondirect = require("./scraper/dondirect");
+const gomtransfer = require("./scraper/gomtransfer");
+const instarem = require("./scraper/instarem");
+const naver = require("./scraper/naver");
+const orbitremit = require("./scraper/orbitremit");
+const remitly = require("./scraper/remitly");
+const stra = require("./scraper/stra");
+const wirebarley = require("./scraper/wirebarley");
+const wise = require("./scraper/wise");
+const wiztoss = require("./scraper/wiztoss");
+const wontop = require("./scraper/wontop");
 
 // TODO: check if fees change
 // hardcoded fees
