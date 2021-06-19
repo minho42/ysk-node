@@ -30,12 +30,12 @@ app.get("", (req, res) => {
 
 app.get("/data", async (req, res) => {
   try {
-    const data = await Currency.find({}).sort({ realRate: -1 });
+    const data = await Currency.find({}, "-_id -created -__v").sort({ realRate: -1 });
     // data.sort((a, b) => {
     //   return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
     // });
 
-    res.send({ data });
+    res.send(data);
   } catch (error) {
     throw error;
   }
