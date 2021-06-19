@@ -17,28 +17,34 @@ const wise = require("../scraper/wise");
 const wiztoss = require("../scraper/wiztoss");
 const wontop = require("../scraper/wontop");
 
-// TODO: remove comma from rate/realRate if A$1 > W1,000
-
-// gomtransfer(),
+// TODO: check if fees change
+// hardcoded fees
+// ie. const fee = 0
+//     dondirect
+//     gomtransfer
+//     naver: N/A
+//     stra
+//     wontop
 
 const fetchAll = async () => {
   console.log("fetchAll called");
 
   const companies = [
-    // azimo,
-    // commbank,
-    // dondirect,
-    // gomtransfer,
-    // instarem,
-    // naver,
-    // orbitremit,
-    // remitly,
-    // stra,
-    // wirebarley,
-    // wise,
-    // wiztoss,
+    azimo,
+    commbank,
+    dondirect,
+    gomtransfer,
+    instarem,
+    naver,
+    orbitremit,
+    remitly,
+    stra,
+    wirebarley,
+    wise,
+    wiztoss,
     wontop,
   ];
+
   companies.map(async (company) => {
     try {
       const data = await company();
