@@ -1,4 +1,4 @@
-const CurrencyItem = ({ index, data: { name, rate, fee, real_rate, url, note, modified } }) => {
+const CurrencyItem = ({ index, data: { name, rate, fee, realRate, url, note, modified } }) => {
   return (
     <tr className="border-b border-gray-700">
       <td>{index + 1}</td>
@@ -13,17 +13,17 @@ const CurrencyItem = ({ index, data: { name, rate, fee, real_rate, url, note, mo
         </a>
       </td>
       <td className="">
-        <div className="inline-flex text-green-400 rounded-md px-2">{real_rate}</div>
+        <div className="inline-flex text-green-400 rounded-md px-2">{realRate}</div>
       </td>
       <td>
-        {rate !== real_rate ? (
+        {rate !== realRate ? (
           <div className="px-1 text-gray-400">{rate}</div>
         ) : (
           <div className="text-center">-</div>
         )}
       </td>
       <td>
-        {rate !== real_rate ? (
+        {rate !== realRate ? (
           <div className="inline-flex text-pink-400 rounded-md px-1">{fee}</div>
         ) : (
           <div className="text-center">-</div>
