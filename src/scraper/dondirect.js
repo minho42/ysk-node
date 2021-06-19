@@ -32,6 +32,8 @@ const dondirect = async () => {
     note = availabilityText;
   }
   const fee = 0;
+  await browser.close();
+
   return new Promise(async function (resolve, reject) {
     try {
       resolve({
@@ -43,6 +45,7 @@ const dondirect = async () => {
       });
     } catch (e) {
       console.error(e);
+      await browser.close();
       reject(new Error(e));
     }
   });
