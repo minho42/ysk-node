@@ -14,12 +14,12 @@ const CurrencyList = () => {
     setCurrencies(data);
 
     if (data && data.length > 0) {
-      const dataSortedByModified = [...data].sort((a, b) => {
+      const dataSortedByUpdated = [...data].sort((a, b) => {
         if (new Date(a.updated) > new Date(b.updated)) return -1;
-        if (new Date(a.updated) < new Date(b.updated)) return 1;
+        else return 1;
       });
 
-      const lastUpdate = dataSortedByModified[0].updated;
+      const lastUpdate = dataSortedByUpdated[0].updated;
       if (lastUpdate) {
         setLastUpdate(formatDistance(new Date(lastUpdate), new Date()) + " ago");
       }
