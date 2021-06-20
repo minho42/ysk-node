@@ -10,7 +10,10 @@ const commbank = async () => {
 
   return new Promise(async function (resolve, reject) {
     try {
-      const res = await axios.get(`https://www.commbank.com.au/content/data/forex-rates/AUD.json`);
+      const timestamp = Math.floor(Date.now());
+      const res = await axios.get(
+        `https://www.commbank.com.au/content/data/forex-rates/AUD.json?path=${timestamp}`
+      );
       const data = res.data.currencies;
       let rate = 0;
       data.map((c) => {
