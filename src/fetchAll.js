@@ -1,4 +1,3 @@
-const https = require("https");
 const Currency = require("./models/currency");
 require("./db/mongoose");
 const utils = require("./utils");
