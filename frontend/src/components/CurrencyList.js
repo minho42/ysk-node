@@ -49,7 +49,7 @@ const CurrencyList = () => {
           </thead>
           <tbody>
             {currencies.map((currency, index) => {
-              return <CurrencyItem key="currency.name" index={index} data={currency} />;
+              return <CurrencyItem key={currency.name} index={index} data={currency} />;
             })}
           </tbody>
         </table>
