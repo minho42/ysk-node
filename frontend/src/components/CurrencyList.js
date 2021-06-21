@@ -15,7 +15,7 @@ const CurrencyList = () => {
 
     if (data && data.length > 0) {
       const dataSortedByUpdated = [...data].sort((a, b) => {
-        if (new Date(a.updated) > new Date(b.updated)) return -1;
+        if (new Date(a.updated) < new Date(b.updated)) return -1;
         else return 1;
       });
 
