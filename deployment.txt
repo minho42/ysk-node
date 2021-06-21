@@ -1,0 +1,2 @@
+To use puppeteer on Heroku
+$ heroku buildpacks:add https://github.com/jontewks/puppeteer-heroku-buildpack.git
