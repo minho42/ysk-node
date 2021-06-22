@@ -21,7 +21,7 @@ const CurrencyList = () => {
 
       const lastUpdate = dataSortedByUpdated[0].updated;
       if (lastUpdate) {
-        setLastUpdate(formatDistance(new Date(lastUpdate), new Date()) + " ago");
+        setLastUpdate(formatDistance(new Date(lastUpdate), new Date(), { includeSeconds: true }) + " ago");
       }
     }
   };
