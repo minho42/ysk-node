@@ -18,11 +18,6 @@ const wontop = async () => {
   await page.goto(url, {
     waitUntil: "networkidle2", // Using this instead of waitForSelector for iframe
   });
-  // //iframe[@class='resp-iframe']
-
-  // const iframeHandle = await page.$("#text-11 > div > center > iframe");
-  // const frame = await iframeHandle.contentFrame()
-  // Switch iframe
   const elementHandle = await page.$(".resp-iframe");
   const frame = await elementHandle.contentFrame();
   await frame.waitForSelector("#rate > strong");
