@@ -7,7 +7,7 @@ const cron = require("node-cron");
 const fetchAll = require("./fetchAll");
 
 cron.schedule(
-  "*/2 * * * *",
+  "*/10 * * * *",
   () => {
     console.log("Running a job: fetchAll");
     fetchAll();
