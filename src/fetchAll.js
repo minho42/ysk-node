@@ -48,7 +48,8 @@ const fetchAll = async () => {
     try {
       const data = await company();
       const filter = { name: data.name };
-      console.log(data);
+      // console.log(data);
+      console.log(`${data.name}: ${data.rate} ${data.fee}`);
       const update = {
         name: data.name,
         url: data.url,
