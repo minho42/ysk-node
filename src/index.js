@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const Currency = require("./models/currency");
 const cron = require("node-cron");
 const fetchAll = require("./fetchAll");
+const helmet = require("helmet");
 
 cron.schedule(
   "*/10 * * * *",
@@ -20,6 +21,8 @@ cron.schedule(
 const app = express();
 app.use(cors());
 app.use(morgan("tiny"));
+app.use(helmet());
+
 const port = process.env.PORT || 8000;
 
 app.get("", (req, res) => {
