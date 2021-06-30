@@ -8,39 +8,32 @@ const commbank = async () => {
   const feeSelector =
     "#cba-imt-hero-mbox > div > div > div.banner-content-panel > div > div:nth-child(2) > p";
 
-  return new Promise(async function (resolve, reject) {
-    try {
-      const timestamp = Math.floor(Date.now());
-      const res = await axios.get(
-        `https://www.commbank.com.au/content/data/forex-rates/AUD.json?path=${timestamp}`
-      );
-      const data = res.data.currencies;
-      let rate = 0;
-      data.map((c) => {
-        if (c.currencyTitle === "KRW") {
-          rate = c.bsImt;
-        }
-      });
-
-      const res2 = await axios.get(
-        "https://www.commbank.com.au/personal/international/international-money-transfer.html"
-      );
-      const $$ = cheerio.load(res2.data);
-      const feeText = $$(feeSelector).text().trim();
-      const fee = feeText.match(/\$([\d,.]+)/)[1];
-
-      resolve({
-        name,
-        url,
-        rate,
-        fee,
-        note: "",
-      });
-    } catch (e) {
-      console.error(e);
-      reject(new Error(e));
+  const timestamp = Math.floor(Date.now());
+  const res = await axios.get(
+    `https://www.commbank.com.au/content/data/forex-rates/AUD.json?path=${timestamp}`
+  );
+  const data = res.data.currencies;
+  let rate = 0;
+  data.map((c) => {
+    if (c.currencyTitle === "KRW") {
+      rate = c.bsImt;
     }
   });
+
+  const res2 = await axios.get(
+    "https://www.commbank.com.au/personal/international/international-money-transfer.html"
+  );
+  const $$ = cheerio.load(res2.data);
+  const feeText = $$(feeSelector).text().trim();
+  const fee = feeText.match(/\$([\d,.]+)/)[1];
+
+  return {
+    name,
+    url,
+    rate,
+    fee,
+    note: "",
+  };
 };
 
 module.exports = commbank;

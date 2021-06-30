@@ -19,21 +19,13 @@ const gomtransfer = async () => {
   const fee = 0;
   await browser.close();
 
-  return new Promise(async function (resolve, reject) {
-    try {
-      resolve({
-        name,
-        url,
-        rate,
-        fee,
-        note: "",
-      });
-    } catch (e) {
-      console.error(e);
-      await browser.close();
-      reject(new Error(e));
-    }
-  });
+  return {
+    name,
+    url,
+    rate,
+    fee,
+    note: "",
+  };
 };
 
 module.exports = gomtransfer;

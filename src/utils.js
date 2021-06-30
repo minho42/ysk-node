@@ -13,20 +13,13 @@ const getRealRate = (rate, fee) => {
 const getNaverUsd = async () => {
   const selector = "#content > div.section_calculator > table:nth-child(4) > tbody > tr > td:nth-child(1)";
 
-  return new Promise(async function (resolve, reject) {
-    try {
-      const res = await axios.get(
-        "https://finance.naver.com/marketindex/exchangeDetail.nhn?marketindexCd=FX_USDKRW"
-      );
-      const $ = cheerio.load(res.data);
-      const result = $(selector).text().trim().replace(",", "");
+  const res = await axios.get(
+    "https://finance.naver.com/marketindex/exchangeDetail.nhn?marketindexCd=FX_USDKRW"
+  );
+  const $ = cheerio.load(res.data);
+  const result = $(selector).text().trim().replace(",", "");
 
-      resolve(result);
-    } catch (e) {
-      console.error(e);
-      reject(new Error(e));
-    }
-  });
+  return result;
 };
 
 module.exports = {
