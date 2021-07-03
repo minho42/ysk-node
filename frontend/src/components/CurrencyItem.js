@@ -3,34 +3,29 @@ const CurrencyItem = ({ index, data: { name, rate, fee, realRate, url, note, mod
     <tr className="border-b border-gray-700">
       <td>{index + 1}</td>
       <td className="py-1">
-        <a
-          className="px-1 text-blue-400 hover:underline"
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a className="px-1  hover:underline" href={url} target="_blank" rel="noopener noreferrer">
           {name}
         </a>
       </td>
       <td className="">
-        <div className="inline-flex text-green-400 rounded-md px-2">{realRate}</div>
+        <div className="inline-flex font-medium rounded-md px-2">{realRate}</div>
       </td>
       <td>
         {rate !== realRate ? (
-          <div className="px-1 text-gray-400">{rate}</div>
+          <div className="px-1 text-gray-400 text-sm">{rate}</div>
         ) : (
           <div className="text-center">-</div>
         )}
       </td>
       <td>
         {rate !== realRate ? (
-          <div className="inline-flex text-pink-400 rounded-md px-1">{fee}</div>
+          <div className="inline-flex text-red-500 text-sm rounded-md px-1">{fee}</div>
         ) : (
           <div className="text-center">-</div>
         )}
       </td>
       <td className="hidden sm:block">
-        {note ? <div className="inline-flex text-yellow-400 px-1 break-all">{note}</div> : ""}
+        {note ? <div className="inline-flex px-1 text-gray-400 text-sm break-all">{note}</div> : ""}
       </td>
     </tr>
   );

@@ -5,7 +5,7 @@ import CurrencyList from "./components/CurrencyList";
 
 function App() {
   return (
-    <div className="text-gray-300">
+    <div>
       <Router>
         <Navbar />
         <Switch>
