@@ -8,6 +8,16 @@ const dondirect = async () => {
     args: ["--no-sandbox", "--disable-setuid-sandbox"],
   });
   const page = await browser.newPage();
+
+  await page.setRequestInterception(true);
+  page.on("request", (req) => {
+    if (req.resourceType() == "stylesheet" || req.resourceType() == "font" || req.resourceType() == "image") {
+      req.abort();
+    } else {
+      req.continue();
+    }
+  });
+
   await page.goto(url, {
     waitUntil: "networkidle2",
   });
