@@ -12,7 +12,7 @@ const CurrencyItem = ({ index, data: { name, rate, fee, realRate, url, note, mod
       </td>
       <td>
         {rate !== realRate ? (
-          <div className="px-1 text-gray-400 text-sm">{rate}</div>
+          <div className="px-1 text-gray-500 text-sm">{rate}</div>
         ) : (
           <div className="text-center">-</div>
         )}
@@ -25,7 +25,7 @@ const CurrencyItem = ({ index, data: { name, rate, fee, realRate, url, note, mod
         )}
       </td>
       <td className="hidden sm:block">
-        {note ? <div className="inline-flex px-1 text-gray-400 text-sm break-all">{note}</div> : ""}
+        {note ? <div className="inline-flex px-1 text-gray-500 text-sm break-all">{note}</div> : ""}
       </td>
     </tr>
   );
