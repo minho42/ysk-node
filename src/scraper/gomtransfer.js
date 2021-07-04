@@ -19,12 +19,13 @@ const gomtransfer = async () => {
   });
 
   await page.goto(url, {
-    waitUntil: "networkidle2", // Using this instead of waitForSelector for iframe
+    waitUntil: "networkidle2",
   });
 
   const rate = await page.evaluate(() => {
     return document.querySelector("#hohans").textContent;
   });
+  console.log(rate);
 
   const fee = 0;
   await browser.close();
