@@ -11,7 +11,7 @@ const gomtransfer = async () => {
 
   await page.setRequestInterception(true);
   page.on("request", (req) => {
-    if (req.resourceType() == "stylesheet" || req.resourceType() == "font" || req.resourceType() == "image") {
+    if (req.resourceType() == "stylesheet" || req.resourceType() == "font") {
       req.abort();
     } else {
       req.continue();
@@ -22,10 +22,10 @@ const gomtransfer = async () => {
     waitUntil: "networkidle2",
   });
 
-  const rate = await page.evaluate(() => {
-    return document.querySelector("#hohans").textContent;
+  let rate = await page.evaluate(() => {
+    return document.querySelector("#hohans").textContent.trim();
   });
-  console.log(rate);
+  if (!rate) rate = 0;
 
   const fee = 0;
   await browser.close();
