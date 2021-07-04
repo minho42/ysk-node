@@ -31,7 +31,7 @@ const wontop = async () => {
   const elementHandle = await page.$(".resp-iframe");
   const frame = await elementHandle.contentFrame();
   await frame.waitForSelector("#rate > strong");
-  let rate = await frame.$eval("#rate > strong", (r) => r.textContent).trim();
+  let rate = await frame.$eval("#rate > strong", (r) => r.textContent.trim());
   if (!rate) rate = 0;
 
   const fee = 0;
