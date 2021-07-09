@@ -1,13 +1,15 @@
-require("dotenv").config();
-const express = require("express");
-const cors = require("cors");
-const morgan = require("morgan");
-const Currency = require("./models/currency");
-const cron = require("node-cron");
-const fetchAll = require("./fetchAll");
-const helmet = require("helmet");
-const Sentry = require("@sentry/node");
-const Tracing = require("@sentry/tracing");
+import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
+import cors from "cors";
+import morgan from "morgan";
+import cron from "node-cron";
+import helmet from "helmet";
+import Sentry from "@sentry/node";
+import Tracing from "@sentry/tracing";
+import { Currency } from "./models/currency.js";
+import { fetchAll } from "./fetchAll.js";
+fetchAll();
 
 cron.schedule(
   "*/10 * * * *",

@@ -1,20 +1,20 @@
-const Currency = require("./models/currency");
-require("./db/mongoose");
-const utils = require("./utils");
+import { Currency } from "./models/currency.js";
+import { connectToDb } from "./db/connectToDb.js";
+import { getRealRate } from "./utils.js";
 
-const azimo = require("./scraper/azimo");
-const commbank = require("./scraper/commbank");
-const dondirect = require("./scraper/dondirect");
-const gomtransfer = require("./scraper/gomtransfer");
-const instarem = require("./scraper/instarem");
-const naver = require("./scraper/naver");
-const orbitremit = require("./scraper/orbitremit");
-const remitly = require("./scraper/remitly");
-const stra = require("./scraper/stra");
-const wirebarley = require("./scraper/wirebarley");
-const wise = require("./scraper/wise");
-const wiztoss = require("./scraper/wiztoss");
-const wontop = require("./scraper/wontop");
+import { azimo } from "./scraper/azimo.js";
+import { commbank } from "./scraper/commbank.js";
+import { dondirect } from "./scraper/dondirect.js";
+import { gomtransfer } from "./scraper/gomtransfer.js";
+import { instarem } from "./scraper/instarem.js";
+import { naver } from "./scraper/naver.js";
+import { orbitremit } from "./scraper/orbitremit.js";
+import { remitly } from "./scraper/remitly.js";
+import { stra } from "./scraper/stra.js";
+import { wirebarley } from "./scraper/wirebarley.js";
+import { wise } from "./scraper/wise.js";
+import { wiztoss } from "./scraper/wiztoss.js";
+import { wontop } from "./scraper/wontop.js";
 
 // TODO: check if fees change
 // hardcoded fees
@@ -25,8 +25,14 @@ const wontop = require("./scraper/wontop");
 //     stra
 //     wontop
 
-const fetchAll = async () => {
+export const fetchAll = async () => {
   console.log("fetchAll called");
+  try {
+    connectToDb();
+  } catch (e) {
+    console.error(e);
+    return;
+  }
 
   const companies = [
     azimo,
@@ -55,7 +61,7 @@ const fetchAll = async () => {
         url: data.url,
         rate: parseFloat(data.rate).toFixed(2),
         fee: parseFloat(data.fee).toFixed(2),
-        realRate: parseFloat(utils.getRealRate(data.rate, data.fee)).toFixed(2),
+        realRate: parseFloat(getRealRate(data.rate, data.fee)).toFixed(2),
         note: data.note,
       };
       const r = await Currency.findOneAndUpdate(filter, update, {
@@ -67,6 +73,3 @@ const fetchAll = async () => {
     }
   });
 };
-
-fetchAll();
-module.exports = fetchAll;

@@ -1,7 +1,7 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+import axios from "axios";
+import cheerio from "cheerio";
 
-const wiztoss = async () => {
+export const wiztoss = async () => {
   const name = "Wiztoss";
   const url = "https://wiztoss.com";
   const selector = "body > div.wts > div.hero.d-none.d-sm-block > div > div > div.col-lg-5.py-5 > h5";
@@ -26,5 +26,3 @@ const wiztoss = async () => {
     note: "",
   };
 };
-
-module.exports = wiztoss;

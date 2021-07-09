@@ -1,12 +1,12 @@
-const axios = require("axios");
-const utils = require("../utils");
+import axios from "axios";
+import { baseAmount } from "../utils.js";
 
-const remitly = async () => {
+export const remitly = async () => {
   const name = "Remitly";
   const url = "https://www.remitly.com";
 
   const res = await axios.get(
-    `https://api.remitly.io/v2/pricing/estimates?amount=${utils.baseAmount}%20AUD&anchor=SEND&conduit=AUS%3AAUD-KOR%3AKRW`
+    `https://api.remitly.io/v2/pricing/estimates?amount=${baseAmount}%20AUD&anchor=SEND&conduit=AUS%3AAUD-KOR%3AKRW`
   );
   let data = null;
   res.data.map((d) => {
@@ -28,5 +28,3 @@ const remitly = async () => {
     note: "",
   };
 };
-
-module.exports = remitly;

@@ -1,5 +1,5 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+import axios from "axios";
+import cheerio from "cheerio";
 const baseAmount = 1000;
 const userAgent =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36";
@@ -22,9 +22,4 @@ const getNaverUsd = async () => {
   return result;
 };
 
-module.exports = {
-  getRealRate,
-  getNaverUsd,
-  baseAmount,
-  userAgent,
-};
+export { getRealRate, getNaverUsd, baseAmount, userAgent };

@@ -1,7 +1,7 @@
-const axios = require("axios");
-const utils = require("../utils");
+import axios from "axios";
+import { userAgent } from "../utils.js";
 
-const wirebarley = async () => {
+export const wirebarley = async () => {
   const name = "Wirebarley";
   const url = "https://www.wirebarley.com";
 
@@ -16,7 +16,7 @@ const wirebarley = async () => {
     iosVer: "9999",
     lang: "en",
     Referer: "https://www.wirebarley.com/",
-    "user-agent": utils.userAgent,
+    "user-agent": userAgent,
     "X-Requested-With": "XMLHttpRequest",
   };
   const res = await axios.get("https://www.wirebarley.com/api/data/composition", { headers });
@@ -32,8 +32,8 @@ const wirebarley = async () => {
       note: `Status: ${res2.status}`,
     };
   }
-  rate = res2.data.data.exRates.KR[0].wbRateData.wbRate3;
-  fee = res2.data.data.exRates.KR[0].transferFees[0].fee2;
+  const rate = res2.data.data.exRates.KR[0].wbRateData.wbRate3;
+  const fee = res2.data.data.exRates.KR[0].transferFees[0].fee2;
 
   return {
     name,
@@ -43,5 +43,3 @@ const wirebarley = async () => {
     note: "",
   };
 };
-
-module.exports = wirebarley;

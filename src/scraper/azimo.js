@@ -1,7 +1,7 @@
-const axios = require("axios");
-const utils = require("../utils");
+import axios from "axios";
+import { getNaverUsd, userAgent } from "../utils.js";
 
-const azimo = async () => {
+export const azimo = async () => {
   const name = "Azimo";
   const url = "https://azimo.com/en/send-money-to-korea-republic-of";
 
@@ -22,7 +22,7 @@ const azimo = async () => {
     "sec-fetch-dest": "empty",
     "sec-fetch-mode": "cors",
     "sec-fetch-site": "same-site",
-    "user-agent": utils.userAgent,
+    "user-agent": userAgent,
     "x-api-version": "3.27.0",
     "x-app-version": "LEGO-CLIENT,4.49.48",
     "x-application-calculator": "INDIVIDUAL",
@@ -36,7 +36,7 @@ const azimo = async () => {
   );
   const rateInUsd = res.data.rates[0].adjustments.rate.value.was;
   const fee = res.data.rates[0].adjustments.fee.max.was;
-  const usdKrwRate = await utils.getNaverUsd();
+  const usdKrwRate = await getNaverUsd();
   if (!usdKrwRate) {
     console.error("Can't convert USD->KRW");
     return {
@@ -56,5 +56,3 @@ const azimo = async () => {
     note: `USD->KRW: ${rateInUsd} x ${usdKrwRate} = ${rate}`,
   };
 };
-
-module.exports = azimo;

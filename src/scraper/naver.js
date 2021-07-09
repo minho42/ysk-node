@@ -1,7 +1,7 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+import axios from "axios";
+import cheerio from "cheerio";
 
-const naver = async () => {
+export const naver = async () => {
   const name = "Naver";
   const url = "https://finance.naver.com/marketindex/exchangeDetail.nhn?marketindexCd=FX_AUDKRW";
   const selector = "#content > div.section_calculator > table:nth-child(4) > tbody > tr > td:nth-child(1)";
@@ -18,5 +18,3 @@ const naver = async () => {
     note: "Base",
   };
 };
-
-module.exports = naver;

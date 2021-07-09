@@ -1,7 +1,7 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+import axios from "axios";
+import cheerio from "cheerio";
 
-const commbank = async () => {
+export const commbank = async () => {
   const name = "Commbank";
   const url =
     "https://www.commbank.com.au/personal/international/foreign-exchange-rates.html?ei=cb-fx-calc-full-fx-list";
@@ -35,5 +35,3 @@ const commbank = async () => {
     note: "",
   };
 };
-
-module.exports = commbank;

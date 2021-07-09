@@ -1,6 +1,6 @@
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
 
-const wontop = async () => {
+export const wontop = async () => {
   const name = "Wontop";
   const url = "http://www.wontop.com.au";
 
@@ -45,5 +45,3 @@ const wontop = async () => {
     note: "",
   };
 };
-
-module.exports = wontop;

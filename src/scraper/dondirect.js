@@ -1,6 +1,6 @@
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
 
-const dondirect = async () => {
+export const dondirect = async () => {
   const name = "DonDirect";
   const url = "https://dondirect.com.au";
 
@@ -51,5 +51,3 @@ const dondirect = async () => {
     note,
   };
 };
-
-module.exports = dondirect;

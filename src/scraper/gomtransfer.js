@@ -1,6 +1,6 @@
-const puppeteer = require("puppeteer");
+import puppeteer from "puppeteer";
 
-const gomtransfer = async () => {
+export const gomtransfer = async () => {
   const name = "GomTransfer";
   const url = "https://www.gomtransfer.com";
 
@@ -38,5 +38,3 @@ const gomtransfer = async () => {
     note: "",
   };
 };
-
-module.exports = gomtransfer;

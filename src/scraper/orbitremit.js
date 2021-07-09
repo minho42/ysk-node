@@ -1,12 +1,12 @@
-const axios = require("axios");
-const utils = require("../utils");
+import axios from "axios";
+import { baseAmount, userAgent } from "../utils.js";
 
-const orbitremit = async () => {
+export const orbitremit = async () => {
   const name = "OrbitRemit";
   const url = "https://www.orbitremit.com";
 
   const data = JSON.stringify({
-    amount: `${utils.baseAmount}.00`, // <- '1000.00' must be string
+    amount: `${baseAmount}.00`, // <- '1000.00' must be string
     focus: "send",
     payout: "KRW",
     send: "AUD",
@@ -20,7 +20,7 @@ const orbitremit = async () => {
       "cache-control": "no-cache",
       "sec-ch-ua": '" Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"',
       "sec-ch-ua-mobile": "?0",
-      "user-agent": utils.userAgent,
+      "user-agent": userAgent,
       "content-type": "application/json",
       accept: "*/*",
       origin: "https://www.orbitremit.com",
@@ -37,9 +37,7 @@ const orbitremit = async () => {
   const res = await axios(config);
   const rate = res.data.data.attributes.rate;
 
-  const res2 = await axios(
-    `https://www.orbitremit.com/api/fees?send=AUD&payout=KRW&amount=${utils.baseAmount}.00`
-  );
+  const res2 = await axios(`https://www.orbitremit.com/api/fees?send=AUD&payout=KRW&amount=${baseAmount}.00`);
   const fee = res2.data.fee;
 
   return {
@@ -50,5 +48,3 @@ const orbitremit = async () => {
     note: "",
   };
 };
-
-module.exports = orbitremit;

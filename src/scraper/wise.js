@@ -1,12 +1,12 @@
-const axios = require("axios");
-const utils = require("../utils");
+import axios from "axios";
+import { baseAmount, userAgent } from "../utils.js";
 
-const wise = async () => {
+export const wise = async () => {
   const name = "Wise";
   const url = "https://wise.com/au";
 
   const data = JSON.stringify({
-    sourceAmount: utils.baseAmount,
+    sourceAmount: baseAmount,
     sourceCurrency: "AUD",
     targetCurrency: "KRW",
     preferredPayIn: null,
@@ -26,7 +26,7 @@ const wise = async () => {
       "time-zone": "+1000",
       "content-type": "application/json",
       accept: "application/json",
-      "user-agent": utils.userAgent,
+      "user-agent": userAgent,
       "x-access-token": "Tr4n5f3rw153",
       origin: "https://wise.com",
       "sec-fetch-site": "same-origin",
@@ -68,5 +68,3 @@ const wise = async () => {
     note: "",
   };
 };
-
-module.exports = wise;

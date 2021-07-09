@@ -1,7 +1,7 @@
-const axios = require("axios");
-const cheerio = require("cheerio");
+import axios from "axios";
+import cheerio from "cheerio";
 
-const stra = async () => {
+export const stra = async () => {
   const name = "Stra";
   const url = "http://1472.com.au";
   const selector = "#m_right > div.aukr > div.ex_bg > span";
@@ -18,5 +18,3 @@ const stra = async () => {
     note: "No fee over $1000",
   };
 };
-
-module.exports = stra;
