@@ -32,7 +32,7 @@ const CurrencyList = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-between">
+    <div className="flex flex-col items-center justify-between mt-2">
       {currencies && currencies.length === 0 ? (
         <div className="text-center">Loading...</div>
       ) : (

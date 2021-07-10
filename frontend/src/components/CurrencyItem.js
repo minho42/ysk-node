@@ -1,6 +1,6 @@
 const CurrencyItem = ({ index, data: { name, rate, fee, realRate, url, note, modified } }) => {
   return (
-    <tr className="border-b border-gray-700">
+    <tr className="border-b border-gray-300">
       <td>{index + 1}</td>
       <td className="py-1">
         <a className="px-1  hover:underline" href={url} target="_blank" rel="noopener noreferrer">
