@@ -24,8 +24,10 @@ const getNaverUsd = async () => {
 };
 
 const ensureNumber = (n) => {
-  const n2 = n.replace(",", "");
-  return parseFloat(n2).toFixed(2);
+  if (n && typeof n === "string") {
+    return parseFloat(n.replace(",", "")).toFixed(2);
+  }
+  return parseFloat(n).toFixed(2);
 };
 
 export { baseAmount, userAgent, getRealRate, getNaverUsd, ensureNumber };
