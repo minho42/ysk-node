@@ -1,5 +1,6 @@
 import axios from "axios";
 import cheerio from "cheerio";
+
 const baseAmount = 1000;
 const userAgent =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36";
@@ -22,4 +23,9 @@ const getNaverUsd = async () => {
   return result;
 };
 
-export { getRealRate, getNaverUsd, baseAmount, userAgent };
+const ensureNumber = (n) => {
+  const n2 = n.replace(",", "");
+  return parseFloat(n2).toFixed(2);
+};
+
+export { baseAmount, userAgent, getRealRate, getNaverUsd, ensureNumber };

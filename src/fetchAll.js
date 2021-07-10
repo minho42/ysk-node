@@ -1,6 +1,6 @@
 import { Currency } from "./models/currency.js";
 import { connectToDb } from "./db/connectToDb.js";
-import { getRealRate } from "./utils.js";
+import { getRealRate, ensureNumber } from "./utils.js";
 
 import { azimo } from "./scraper/azimo.js";
 import { commbank } from "./scraper/commbank.js";
@@ -59,9 +59,9 @@ export const fetchAll = async () => {
       const update = {
         name: data.name,
         url: data.url,
-        rate: parseFloat(data.rate).toFixed(2),
-        fee: parseFloat(data.fee).toFixed(2),
-        realRate: parseFloat(getRealRate(data.rate, data.fee)).toFixed(2),
+        rate: ensureNumber(data.rate),
+        fee: ensureNumber(data.fee),
+        realRate: ensureNumber(getRealRate(data.rate, data.fee)),
         note: data.note,
       };
       const r = await Currency.findOneAndUpdate(filter, update, {
