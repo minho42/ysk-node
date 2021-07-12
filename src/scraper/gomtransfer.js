@@ -27,6 +27,16 @@ export const gomtransfer = async () => {
   });
   if (!rate) rate = 0;
 
+  const availabilityText = await page.evaluate(() => {
+    return document.querySelector(
+      "#thema_wrapper > div.at-body > div > div:nth-child(1) > div > div > div:nth-child(2) > table > tbody > tr:nth-child(2) > td:nth-child(4) > span"
+    ).textContent;
+  });
+  let note = "";
+  if (availabilityText.includes("정지")) {
+    note = availabilityText;
+  }
+
   const fee = 0;
   await browser.close();
 
@@ -35,6 +45,6 @@ export const gomtransfer = async () => {
     url,
     rate,
     fee,
-    note: "",
+    note,
   };
 };
