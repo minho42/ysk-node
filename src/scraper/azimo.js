@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getNaverUsd, userAgent } from "../utils.js";
+import { getNaverUsd, userAgent, ensureNumber } from "../utils.js";
 
 export const azimo = async () => {
   const name = "Azimo";
@@ -53,6 +53,6 @@ export const azimo = async () => {
     url,
     rate,
     fee,
-    note: `USD->KRW: ${rateInUsd} x ${usdKrwRate} = ${rate}`,
+    note: `USD->KRW: ${rateInUsd} x ${usdKrwRate} = ${ensureNumber(rate)}`,
   };
 };
