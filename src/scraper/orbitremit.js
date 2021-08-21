@@ -7,9 +7,9 @@ export const orbitremit = async () => {
 
   const data = JSON.stringify({
     amount: `${baseAmount}.00`, // <- '1000.00' must be string
+    sendCurrency: "AUD",
+    payoutCurrency: "KRW",
     focus: "send",
-    payout: "KRW",
-    send: "AUD",
   });
   const config = {
     method: "post",
