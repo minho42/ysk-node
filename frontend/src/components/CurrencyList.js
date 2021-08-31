@@ -36,7 +36,7 @@ const CurrencyList = () => {
       {currencies && currencies.length === 0 ? (
         <div className="text-center">Loading...</div>
       ) : (
-        <table className="table-auto">
+        <table className="w-11/12 md:w-auto">
           <thead>
             <tr className="border-b-2 border-gray-700">
               <th className="font-medium">Name</th>
