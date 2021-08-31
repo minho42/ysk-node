@@ -39,7 +39,6 @@ const CurrencyList = () => {
         <table className="table-auto">
           <thead>
             <tr className="border-b-2 border-gray-700">
-              <th className="font-medium">No</th>
               <th className="font-medium">Name</th>
               <th className="font-medium">Real rate</th>
               <th className="font-medium">Rate</th>
@@ -48,8 +47,8 @@ const CurrencyList = () => {
             </tr>
           </thead>
           <tbody>
-            {currencies.map((currency, index) => {
-              return <CurrencyItem key={currency.name} index={index} data={currency} />;
+            {currencies.map((currency) => {
+              return <CurrencyItem key={currency.name} data={currency} />;
             })}
           </tbody>
         </table>
