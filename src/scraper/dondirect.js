@@ -55,7 +55,7 @@ export const dondirect = async () => {
       note,
     };
   } catch (error) {
-    // console.error(error);
+    console.error(error);
     return {
       name,
       url,
