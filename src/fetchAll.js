@@ -8,6 +8,7 @@ import { dondirect } from "./scraper/dondirect.js";
 import { gomtransfer } from "./scraper/gomtransfer.js";
 import { instarem } from "./scraper/instarem.js";
 import { naver } from "./scraper/naver.js";
+import { ofx } from "./scraper/ofx.js";
 import { orbitremit } from "./scraper/orbitremit.js";
 import { remitly } from "./scraper/remitly.js";
 import { stra } from "./scraper/stra.js";
@@ -41,6 +42,7 @@ export const fetchAll = async () => {
     gomtransfer,
     instarem,
     naver,
+    ofx,
     orbitremit,
     remitly,
     stra,
