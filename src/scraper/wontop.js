@@ -9,6 +9,7 @@ export const wontop = async () => {
         // Below 2 for deployment
         "--no-sandbox",
         "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
         // Below 2 for iframe
         "--disable-web-security",
         "--disable-features=IsolateOrigins,site-per-process",
