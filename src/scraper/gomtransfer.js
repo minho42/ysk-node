@@ -39,7 +39,6 @@ export const gomtransfer = async () => {
     }
 
     const fee = 0;
-    await browser.close();
 
     return {
       name,
@@ -57,5 +56,7 @@ export const gomtransfer = async () => {
       fee: 0,
       note: "Error",
     };
+  } finally {
+    await browser.close();
   }
 };

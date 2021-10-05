@@ -45,7 +45,6 @@ export const dondirect = async () => {
       note = availabilityText;
     }
     const fee = 0;
-    await browser.close();
 
     return {
       name,
@@ -63,5 +62,7 @@ export const dondirect = async () => {
       fee: 0,
       note: "Error",
     };
+  } finally {
+    await browser.close();
   }
 };

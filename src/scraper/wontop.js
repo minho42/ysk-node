@@ -40,7 +40,6 @@ export const wontop = async () => {
     if (!rate) rate = 0;
 
     const fee = 0;
-    await browser.close();
 
     return {
       name,
@@ -58,5 +57,7 @@ export const wontop = async () => {
       fee: 0,
       note: "Error",
     };
+  } finally {
+    await browser.close();
   }
 };
