@@ -5,7 +5,7 @@ export const dondirect = async () => {
   const url = "https://dondirect.com.au";
   try {
     const browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
     const page = await browser.newPage();
 
@@ -63,6 +63,8 @@ export const dondirect = async () => {
       note: "Error",
     };
   } finally {
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
   }
 };
