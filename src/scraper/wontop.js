@@ -3,17 +3,17 @@ import puppeteer from "puppeteer";
 export const wontop = async () => {
   const name = "Wontop";
   const url = "http://www.wontop.com.au";
+  const browser = await puppeteer.launch({
+    args: [
+      // Below 2 for deployment
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      // Below 2 for iframe
+      "--disable-web-security",
+      "--disable-features=IsolateOrigins,site-per-process",
+    ],
+  });
   try {
-    const browser = await puppeteer.launch({
-      args: [
-        // Below 2 for deployment
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-        // Below 2 for iframe
-        "--disable-web-security",
-        "--disable-features=IsolateOrigins,site-per-process",
-      ],
-    });
     const page = await browser.newPage();
 
     await page.setRequestInterception(true);
@@ -57,8 +57,6 @@ export const wontop = async () => {
       note: "Error",
     };
   } finally {
-    if (browser) {
-      await browser.close();
-    }
+    await browser.close();
   }
 };

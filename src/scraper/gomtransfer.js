@@ -4,10 +4,10 @@ export const gomtransfer = async () => {
   const name = "GomTransfer";
   const url = "https://www.gomtransfer.com";
 
+  const browser = await puppeteer.launch({
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
   try {
-    const browser = await puppeteer.launch({
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
     const page = await browser.newPage();
 
     await page.setRequestInterception(true);
@@ -57,8 +57,6 @@ export const gomtransfer = async () => {
       note: "Error",
     };
   } finally {
-    if (browser) {
-      await browser.close();
-    }
+    await browser.close();
   }
 };
