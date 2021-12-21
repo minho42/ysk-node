@@ -39,7 +39,7 @@ export const fetchAll = async () => {
     azimo,
     commbank,
     dondirect,
-    gomtransfer,
+    // gomtransfer,
     instarem,
     naver,
     ofx,
@@ -49,7 +49,7 @@ export const fetchAll = async () => {
     wirebarley,
     wise,
     wiztoss,
-    wontop,
+    // wontop,
   ];
 
   companies.map(async (company) => {
