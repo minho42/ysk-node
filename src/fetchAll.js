@@ -36,7 +36,7 @@ export const fetchAll = async () => {
   }
 
   const companies = [
-    azimo,
+    // azimo,
     commbank,
     dondirect,
     // gomtransfer,
