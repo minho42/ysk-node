@@ -34,8 +34,8 @@ export const azimo = async () => {
     "https://api.azimo.com/service-rates/v1/public/en/prices/current?sendingCountry=AUS&sendingCurrency=AUD&receivingCountry=KOR&receivingCurrency=USD&deliveryMethod=SWIFT",
     { headers }
   );
-  const rateInUsd = res.data.rates[0].adjustments.rate.value.was;
-  const fee = res.data.rates[0].adjustments.fee.max.was;
+  const rateInUsd = res.data.rates[0].rate;
+  const fee = res.data.rates[0].fee.max;
   const usdKrwRate = await getNaverUsd();
   if (!usdKrwRate) {
     console.error("Can't convert USD->KRW");
