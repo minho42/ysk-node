@@ -1,0 +1,45 @@
+import axios from "axios";
+import { userAgent } from "../utils.js";
+
+export const wirebarley = async () => {
+  const name = "Wirebarley";
+  const url = "https://www.wirebarley.com";
+
+  const headers = {
+    Accept: "*/*",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-AU,en;q=0.9,ko-KR;q=0.8,ko;q=0.7,en-GB;q=0.6,en-US;q=0.5",
+    Connection: "keep-alive",
+    Cookie:
+      "_ga=GA1.2.455691707.1556844022; __zlcmid=s7iCuUgrnol1nf; wbLocaleCookie=en; _gid=GA1.2.1493689065.1559657242; _gat=1",
+    Host: "www.wirebarley.com",
+    iosVer: "9999",
+    lang: "en",
+    Referer: "https://www.wirebarley.com/",
+    "user-agent": userAgent,
+    "X-Requested-With": "XMLHttpRequest",
+  };
+  const res = await axios.get("https://www.wirebarley.com/api/data/composition", { headers });
+
+  const res2 = await axios.get("https://www.wirebarley.com/api/tx/exrate/AU/AUD", { headers });
+  if (res2.status !== 200) {
+    console.error("Status not 200 but:" + res2.status);
+    return {
+      name,
+      url,
+      rate: 0,
+      fee: 0,
+      note: `Status: ${res2.status}`,
+    };
+  }
+  const rate = res2.data.data.exRates.KR[0].wbRateData.wbRate3;
+  const fee = res2.data.data.exRates.KR[0].transferFees[0].fee2;
+
+  return {
+    name,
+    url,
+    rate,
+    fee,
+    note: "",
+  };
+};
