@@ -13,7 +13,6 @@ import { stra } from "./scraper/stra.js";
 import { wirebarley } from "./scraper/wirebarley.js";
 import { wise } from "./scraper/wise.js";
 import { wiztoss } from "./scraper/wiztoss.js";
-import { wontop } from "./scraper/wontop.js";
 
 // TODO: check if fees change
 // hardcoded fees
@@ -21,7 +20,6 @@ import { wontop } from "./scraper/wontop.js";
 //     dondirect
 //     naver: N/A
 //     stra
-//     wontop
 
 export const fetchAll = async () => {
   console.log("fetchAll called");
@@ -44,7 +42,6 @@ export const fetchAll = async () => {
     wirebarley,
     wise,
     wiztoss,
-    // wontop,
   ];
 
   companies.map(async (company) => {
