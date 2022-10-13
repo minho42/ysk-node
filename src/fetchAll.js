@@ -2,10 +2,8 @@ import { Currency } from "./models/currency.js";
 import { connectToDb } from "./db/connectToDb.js";
 import { getRealRate, ensureNumber } from "./utils.js";
 
-import { azimo } from "./scraper/azimo.js";
 import { commbank } from "./scraper/commbank.js";
 import { dondirect } from "./scraper/dondirect.js";
-import { gomtransfer } from "./scraper/gomtransfer.js";
 import { instarem } from "./scraper/instarem.js";
 import { naver } from "./scraper/naver.js";
 import { ofx } from "./scraper/ofx.js";
@@ -21,7 +19,6 @@ import { wontop } from "./scraper/wontop.js";
 // hardcoded fees
 // ie. const fee = 0
 //     dondirect
-//     gomtransfer
 //     naver: N/A
 //     stra
 //     wontop
@@ -36,10 +33,8 @@ export const fetchAll = async () => {
   }
 
   const companies = [
-    // azimo,
     commbank,
     dondirect,
-    // gomtransfer,
     instarem,
     naver,
     ofx,
