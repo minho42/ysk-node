@@ -1,18 +1,18 @@
-import { Currency } from "./models/currency.js";
-import { connectToDb } from "./db/connectToDb.js";
-import { getRealRate, ensureNumber } from "./utils.js";
+import { Currency } from "./models/currency";
+import { connectToDb } from "./db/connectToDb";
+import { getRealRate, ensureNumber } from "./utils";
 
-import { commbank } from "./scraper/commbank.js";
-import { dondirect } from "./scraper/dondirect.js";
-import { instarem } from "./scraper/instarem.js";
-import { naver } from "./scraper/naver.js";
-import { ofx } from "./scraper/ofx.js";
-import { orbitremit } from "./scraper/orbitremit.js";
-import { remitly } from "./scraper/remitly.js";
-import { stra } from "./scraper/stra.js";
-import { wirebarley } from "./scraper/wirebarley.js";
-import { wise } from "./scraper/wise.js";
-import { wiztoss } from "./scraper/wiztoss.js";
+import { commbank } from "./scraper/commbank";
+import { dondirect } from "./scraper/dondirect";
+import { instarem } from "./scraper/instarem";
+import { naver } from "./scraper/naver";
+import { ofx } from "./scraper/ofx";
+import { orbitremit } from "./scraper/orbitremit";
+import { remitly } from "./scraper/remitly";
+import { stra } from "./scraper/stra";
+import { wirebarley } from "./scraper/wirebarley";
+import { wise } from "./scraper/wise";
+import { wiztoss } from "./scraper/wiztoss";
 
 // TODO: check if fees change
 // hardcoded fees

@@ -4,7 +4,7 @@ import CurrencyItem from "./CurrencyItem";
 
 const CurrencyList = () => {
   const [currencies, setCurrencies] = useState([]);
-  const [lastUpdate, setLastUpdate] = useState("");
+  const [lastUpdate, setLastUpdate] = useState<string>("");
 
   const getData = async () => {
     const res = await fetch("http://localhost:8000/data");

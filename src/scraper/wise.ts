@@ -1,5 +1,5 @@
-import axios from "axios";
-import { baseAmount, userAgent } from "../utils.js";
+import axios, {AxiosRequestConfig} from "axios";
+import { baseAmount, userAgent } from "../utils";
 
 export const wise = async () => {
   const name = "Wise";
@@ -13,7 +13,7 @@ export const wise = async () => {
     guaranteedTargetAmount: false,
   });
 
-  const config = {
+  const config:AxiosRequestConfig = {
     method: "post",
     url: "https://wise.com/gateway/v3/quotes/",
     headers: {

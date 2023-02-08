@@ -1,4 +1,4 @@
-const CurrencyItem = ({ data: { name, rate, fee, realRate, url, note, modified } }) => {
+const CurrencyItem = ({ data: { name, rate, fee, realRate, url, note } }) => {
   return (
     <tr className="border-b border-gray-300 text-center">
       <td className="py-1">

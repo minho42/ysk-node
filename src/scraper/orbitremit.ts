@@ -1,5 +1,5 @@
-import axios from "axios";
-import { baseAmount, userAgent } from "../utils.js";
+import axios, {AxiosRequestConfig} from "axios";
+import { baseAmount, userAgent } from "../utils";
 
 export const orbitremit = async () => {
   const name = "OrbitRemit";
@@ -11,7 +11,7 @@ export const orbitremit = async () => {
     payoutCurrency: "KRW",
     focus: "send",
   });
-  const config = {
+  const config:AxiosRequestConfig = {
     method: "post",
     url: "https://www.orbitremit.com/api/rates",
     headers: {

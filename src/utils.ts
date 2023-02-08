@@ -1,11 +1,11 @@
 import axios from "axios";
-import cheerio from "cheerio";
+import * as cheerio from 'cheerio'
 
 const baseAmount = 1000;
 const userAgent =
   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36";
 
-const getRealRate = (rate, fee) => {
+const getRealRate = (rate:number, fee:number):number => {
   if (!fee || fee === 0) return rate;
 
   return Math.round((baseAmount - fee) * rate * 100) / 100 / baseAmount;
@@ -23,7 +23,7 @@ const getNaverUsd = async () => {
   return result;
 };
 
-const ensureNumber = (n) => {
+const ensureNumber = (n):string => {
   if (n && typeof n === "string") {
     return parseFloat(n.replace(",", "")).toFixed(2);
   }

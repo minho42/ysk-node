@@ -33,7 +33,7 @@ export const dondirect = async () => {
     });
     // 호주에서 한국 854원 (862-8)
     let rate = rateText.match(/[\d,.]+/)[0];
-    if (!rate) rate = 0;
+    if (!rate) rate = "0";
 
     const availabilityText = await page.evaluate(() => {
       return document.querySelector(

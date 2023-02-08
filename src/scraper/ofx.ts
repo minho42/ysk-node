@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseAmount } from "../utils.js";
+import { baseAmount } from "../utils";
 
 export const ofx = async () => {
   const name = "OFX";

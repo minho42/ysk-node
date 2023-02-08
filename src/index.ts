@@ -1,10 +1,10 @@
-import express from "express";
+import express, {Request, Response} from "express";
 import cors from "cors";
 import morgan from "morgan";
 import cron from "node-cron";
 import helmet from "helmet";
-import { Currency } from "./models/currency.js";
-import { fetchAll } from "./fetchAll.js";
+import { Currency } from "./models/currency";
+import { fetchAll } from "./fetchAll";
 fetchAll();
 
 cron.schedule(
@@ -26,13 +26,13 @@ app.use(helmet());
 
 const port = process.env.PORT || 8000;
 
-app.get("", (req, res) => {
+app.get("", (req: Request, res:Response) => {
   res.send({
     data: "It's working!",
   });
 });
 
-app.get("/data", async (req, res) => {
+app.get("/data", async (req: Request, res:Response) => {
   try {
     const data = await Currency.find({}, "-_id -created -__v").sort({ realRate: -1 });
 
@@ -42,7 +42,7 @@ app.get("/data", async (req, res) => {
   }
 });
 
-app.get("*", (req, res) => {
+app.get("*", (req: Request, res:Response) => {
   res.status(404).send({
     error: "404 Not Found",
   });

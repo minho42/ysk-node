@@ -1,5 +1,5 @@
 import axios from "axios";
-import { userAgent } from "../utils.js";
+import { userAgent } from "../utils";
 
 export const wirebarley = async () => {
   const name = "Wirebarley";
