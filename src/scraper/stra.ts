@@ -1,5 +1,5 @@
 import axios from "axios";
-import cheerio from "cheerio";
+import * as cheerio from 'cheerio'
 
 export const stra = async () => {
   const name = "Stra";
