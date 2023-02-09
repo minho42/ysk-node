@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CurrencyList from "./components/CurrencyList";
@@ -8,11 +8,9 @@ function App() {
     <div>
       <Router>
         <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <CurrencyList />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<CurrencyList />} />
+        </Routes>
         <Footer />
       </Router>
     </div>

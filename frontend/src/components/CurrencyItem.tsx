@@ -1,4 +1,6 @@
-const CurrencyItem = ({ data: { name, rate, fee, realRate, url, note } }) => {
+import { ICurrency } from "./CurrencyList";
+
+const CurrencyItem: React.FC<{ data: ICurrency }> = ({ data: { name, rate, fee, realRate, url, note } }) => {
   return (
     <tr className="border-b border-gray-300 text-center">
       <td className="py-1">
