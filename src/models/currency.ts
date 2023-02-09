@@ -1,6 +1,18 @@
 import mongoose from "mongoose";
 
-const currencySchema = new mongoose.Schema(
+export interface ICurrency {
+  name: string;
+  rate: number;
+  realRate: number;
+  fee: number;
+  url: string;
+  note: string;
+  created: Date;
+  updated: Date;
+}
+
+
+const currencySchema = new mongoose.Schema<ICurrency>(
   {
     name: {
       type: String,
@@ -42,4 +54,4 @@ const currencySchema = new mongoose.Schema(
   }
 );
 
-export const Currency = mongoose.model("Currency", currencySchema);
+export const Currency = mongoose.model<ICurrency>("Currency", currencySchema);
