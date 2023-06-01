@@ -1,7 +1,5 @@
-import { Currency } from "./models/currency";
-import { connectToDb } from "./db/connectToDb";
+import { PrismaClient } from "@prisma/client";
 import { getRealRate, ensureNumber } from "./utils";
-
 import { commbank } from "./scraper/commbank";
 import { dondirect } from "./scraper/dondirect";
 import { instarem } from "./scraper/instarem";
@@ -14,6 +12,8 @@ import { wirebarley } from "./scraper/wirebarley";
 import { wise } from "./scraper/wise";
 import { wiztoss } from "./scraper/wiztoss";
 
+const prisma = new PrismaClient();
+
 // TODO: check if fees change
 // hardcoded fees
 // ie. const fee = 0
@@ -23,12 +23,17 @@ import { wiztoss } from "./scraper/wiztoss";
 
 export const fetchAll = async () => {
   console.log("fetchAll called");
-  try {
-    connectToDb();
-  } catch (e) {
-    console.error(e);
-    return;
-  }
+
+  type Currency = {
+    name: string;
+    rate: number;
+    realRate: number;
+    fee: number;
+    url: string;
+    note: string;
+    created: Date;
+    updated: Date;
+  };
 
   const companies = [
     commbank,
@@ -47,20 +52,28 @@ export const fetchAll = async () => {
   companies.map(async (company) => {
     try {
       const data = await company();
-      const filter = { name: data.name };
+
       // console.log(data);
       console.log(`${data.name}: [${data.rate}], [${data.fee}]`);
-      const update = {
-        name: data.name,
-        url: data.url,
-        rate: ensureNumber(data.rate),
-        fee: ensureNumber(data.fee),
-        realRate: ensureNumber(getRealRate(data.rate, data.fee)),
-        note: data.note,
-      };
-      const r = await Currency.findOneAndUpdate(filter, update, {
-        new: true,
-        upsert: true,
+      await prisma.currency.upsert({
+        where: {
+          name: data.name,
+        },
+        update: {
+          rate: data.rate,
+          realRate: getRealRate(data.rate, data.fee),
+          fee: data.fee,
+          url: data.url,
+          note: data.note,
+        },
+        create: {
+          name: data.name,
+          rate: data.rate,
+          realRate: getRealRate(data.rate, data.fee),
+          fee: data.fee,
+          url: data.url,
+          note: data.note,
+        },
       });
     } catch (error) {
       // TODO: set results to 0 when error occurs instead of getting the latest successful results

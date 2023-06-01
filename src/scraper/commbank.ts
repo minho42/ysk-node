@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as cheerio from 'cheerio'
+import * as cheerio from "cheerio";
 
 export const commbank = async () => {
   const name = "Commbank";
@@ -13,7 +13,7 @@ export const commbank = async () => {
     `https://www.commbank.com.au/content/data/forex-rates/AUD.json?path=${timestamp}`
   );
   const data = res.data.currencies;
-  let rate = 0;
+  let rate = "0";
   data.map((c) => {
     if (c.currencyTitle === "KRW") {
       rate = c.bsImt;
@@ -30,8 +30,8 @@ export const commbank = async () => {
   return {
     name,
     url,
-    rate,
-    fee,
+    rate: parseFloat(rate),
+    fee: parseFloat(fee),
     note: "",
   };
 };

@@ -22,8 +22,8 @@ export const remitly = async () => {
   return {
     name,
     url,
-    rate,
-    fee,
+    rate: parseFloat(rate),
+    fee: parseFloat(fee),
     // note: "프로모션 적용안함; 수수료 Express delivery 기준",
     note: "",
   };

@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as cheerio from 'cheerio'
+import * as cheerio from "cheerio";
 
 export const stra = async () => {
   const name = "Stra";
@@ -13,7 +13,7 @@ export const stra = async () => {
   return {
     name,
     url,
-    rate,
+    rate: parseFloat(rate),
     fee,
     note: "No fee over $1000",
   };

@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as cheerio from 'cheerio'
+import * as cheerio from "cheerio";
 
 export const wiztoss = async () => {
   const name = "Wiztoss";
@@ -21,8 +21,8 @@ export const wiztoss = async () => {
   return {
     name,
     url,
-    rate,
-    fee,
+    rate: parseFloat(rate),
+    fee: parseFloat(fee),
     note: "",
   };
 };

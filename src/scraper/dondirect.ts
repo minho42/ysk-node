@@ -49,7 +49,7 @@ export const dondirect = async () => {
     return {
       name,
       url,
-      rate,
+      rate: parseFloat(rate),
       fee,
       note,
     };

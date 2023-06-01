@@ -48,8 +48,8 @@ export const orbitremit = async () => {
   return {
     name,
     url,
-    rate,
-    fee,
+    rate: parseFloat(rate),
+    fee: parseFloat(fee),
     note: "",
   };
 };

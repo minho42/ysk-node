@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as cheerio from 'cheerio'
+import * as cheerio from "cheerio";
 
 export const naver = async () => {
   const name = "Naver";
@@ -13,7 +13,7 @@ export const naver = async () => {
   return {
     name,
     url,
-    rate,
+    rate: parseFloat(rate),
     fee,
     note: "Base",
   };
