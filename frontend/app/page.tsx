@@ -1,7 +1,7 @@
 import HomePage from "./home-page";
 
 async function getCurrencies() {
-  const res = await fetch("http://localhost:8000/data");
+  const res = await fetch("https://ysk-node.up.railway.app/data");
   const data = await res.json();
   return data;
 }
