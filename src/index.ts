@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 fetchAll();
 
 cron.schedule(
-  "*/30 * * * *",
+  "*/60 * * * *",
   () => {
     console.log("Running a job: fetchAll");
     fetchAll();
