@@ -14,7 +14,7 @@ type Currency = {
 
 function CurrencyItem({ data: { name, rate, fee, realRate, url, updatedAt, note } }: { data: Currency }) {
   return (
-    <div className="w-96 rounded-xl bg-white shadow px-6 py-3">
+    <div className="w-96 rounded-xl bg-white shadow px-6 py-3 text-center">
       <div className="">
         <h2 className="">
           <a
@@ -39,7 +39,7 @@ function CurrencyItem({ data: { name, rate, fee, realRate, url, updatedAt, note 
           )}
         </div>
         {note ? <div className="py-3">{note}</div> : ""}
-        <div className="text-center text-sm text-gray-400 pt-3">
+        <div className="text-sm text-gray-400 pt-3">
           {formatDistance(new Date(updatedAt), new Date(), { includeSeconds: false, addSuffix: true })}
         </div>
       </div>
