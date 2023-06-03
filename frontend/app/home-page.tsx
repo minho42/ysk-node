@@ -40,9 +40,7 @@ function CurrencyItem({ data: { name, rate, fee, realRate, url, updatedAt, note 
         </div>
         {note ? <div className="py-3">{note}</div> : ""}
         <div className="text-sm text-gray-400 pt-3">
-          {updatedAt
-            ? formatDistance(new Date(updatedAt), new Date(), { includeSeconds: false, addSuffix: true })
-            : ""}
+          {formatDistance(new Date(updatedAt), new Date(), { includeSeconds: false, addSuffix: true })}
         </div>
       </div>
     </div>
