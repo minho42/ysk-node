@@ -5,8 +5,7 @@ export const commbank = async () => {
   const name = "Commbank";
   const url =
     "https://www.commbank.com.au/personal/international/foreign-exchange-rates.html?ei=cb-fx-calc-full-fx-list";
-  const feeSelector =
-    "#cba-imt-hero-mbox > div > div > div.banner-content-panel > div > div:nth-child(2) > p";
+  // const feeSelector = "#cba-imt-hero-mbox > div > div > div.banner-content-panel > div > div:nth-child(2) > p";
 
   const timestamp = Math.floor(Date.now());
   const res = await axios.get(
@@ -24,14 +23,17 @@ export const commbank = async () => {
     "https://www.commbank.com.au/personal/international/international-money-transfer.html"
   );
   const $$ = cheerio.load(res2.data);
-  const feeText = $$(feeSelector).text().trim();
-  const fee = feeText.match(/\$([\d,.]+)/)[1];
+  // const feeText = $$(feeSelector).text().trim();
+  // const fee = feeText.match(/\$([\d,.]+)/)[1];
+
+  // Please note: From 1st June 2023, the transfer fee will be waived (excluding AUD to AUD transfers)
+  const fee = 0;
 
   return {
     name,
     url,
     rate: parseFloat(rate),
-    fee: parseFloat(fee),
+    fee: fee,
     note: "",
   };
 };
