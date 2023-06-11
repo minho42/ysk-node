@@ -12,8 +12,7 @@ fetchAll();
 
 // https://crontab.guru/
 cron.schedule(
-  // "*/60 * * * *",
-  "* */2 * * *",
+  "*/120 * * * *",
   () => {
     console.log("Running a job: fetchAll");
     fetchAll();
