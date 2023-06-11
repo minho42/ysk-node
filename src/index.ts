@@ -5,16 +5,22 @@ import morgan from "morgan";
 import cron from "node-cron";
 import helmet from "helmet";
 import { fetchAll } from "./fetchAll";
+import cronstrue from "cronstrue";
 
 const prisma = new PrismaClient();
 
 fetchAll();
 
-// https://crontab.guru/
+// https://github.com/node-cron/node-cron
+// https://github.com/bradymholt/cronstrue
+
+const crontab = "0 0 8,10,12,14,16 * * 1-6";
+
 cron.schedule(
-  "*/120 * * * *",
+  crontab,
   () => {
     console.log("Running a job: fetchAll");
+    console.log(cronstrue.toString(crontab));
     fetchAll();
   },
   {
