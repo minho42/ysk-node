@@ -14,7 +14,7 @@ fetchAll();
 // https://github.com/node-cron/node-cron
 // https://github.com/bradymholt/cronstrue
 
-const crontab = "0 0 8,10,12,14,16 * * 1-6";
+const crontab = "0 8,10,12,14,16 * * 1-6";
 
 cron.schedule(
   crontab,
