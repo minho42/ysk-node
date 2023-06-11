@@ -10,8 +10,10 @@ const prisma = new PrismaClient();
 
 fetchAll();
 
+// https://crontab.guru/
 cron.schedule(
-  "*/60 * * * *",
+  // "*/60 * * * *",
+  "* */2 * * *",
   () => {
     console.log("Running a job: fetchAll");
     fetchAll();
