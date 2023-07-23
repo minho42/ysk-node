@@ -8,4 +8,6 @@ body {
   /* font-size: 14px; */
   color: #0f1419;
   background-color: #f0f2f5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
