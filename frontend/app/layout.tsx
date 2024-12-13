@@ -1,10 +1,10 @@
-import "./globals.css";
-import Link from "next/link";
+import "./globals.css"
+import Link from "next/link"
 
 export const metadata = {
   title: "🇦🇺 AUD → 🇰🇷 KRW money transfer services",
   description: "🇦🇺 AUD → 🇰🇷 KRW money transfer services",
-};
+}
 
 function Navbar() {
   return (
@@ -13,21 +13,9 @@ function Navbar() {
         <div className="flex flex-grow justify-start text-xl font-semibold">
           <Link href="/">YSK: AUD → KRW</Link>
         </div>
-        <div className="flex items-center space-x-3">
-          <div className="p-2">
-            <a
-              className="underline text-sm"
-              href="https://twitter.com/minho42_"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Twitter
-            </a>
-          </div>
-        </div>
       </div>
     </nav>
-  );
+  )
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -40,5 +28,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </div>
       </body>
     </html>
-  );
+  )
 }
